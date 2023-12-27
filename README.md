@@ -1,5 +1,5 @@
 Todo
-- [x ] Lab 1: Welcome to Java
+- [x] Lab 1: Welcome to Java
 - [ ] Lab 2: Debugging
 - [ ] Lab 3: Randomized Testing and Timing
 - [ ] Lab 4: Debugging
