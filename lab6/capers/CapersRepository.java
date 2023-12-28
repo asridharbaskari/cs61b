@@ -18,7 +18,7 @@ import static capers.Utils.*;
  *
  * TODO: change the above structure if you do something different.
  */
-public class gitCapersRepository {
+public class CapersRepository {
     /** Current Working Directory. */
     static final File CWD = new File(System.getProperty("user.dir"));
 
@@ -66,6 +66,7 @@ public class gitCapersRepository {
         String currStory = Utils.readContentsAsString(story);
         currStory += text + "\n";
         Utils.writeContents(story, currStory);
+        System.out.println(currStory);
     }
 
     /**
@@ -73,10 +74,9 @@ public class gitCapersRepository {
      * three non-command arguments of args (name, breed, age).
      * Also prints out the dog's information using toString().
      */
-    public static void makeDog(String name, String breed, int age) {
+    public static void makeDog(String name, String breed, int age) throws IOException {
         Dog dog = new Dog(name, breed, age);
-        File dogFile = Utils.join(Dog.DOG_FOLDER, name + ".dog");
-        Utils.writeContents(dogFile, dog);
+        dog.saveDog();
     }
 
     /**
