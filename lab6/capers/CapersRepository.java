@@ -1,6 +1,11 @@
 package capers;
 
+import jdk.jshell.execution.Util;
+
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import static capers.Utils.*;
 
 /** A repository for Capers 
@@ -13,12 +18,12 @@ import static capers.Utils.*;
  *
  * TODO: change the above structure if you do something different.
  */
-public class CapersRepository {
+public class gitCapersRepository {
     /** Current Working Directory. */
     static final File CWD = new File(System.getProperty("user.dir"));
 
     /** Main metadata folder. */
-    static final File CAPERS_FOLDER = null; // TODO Hint: look at the `join`
+    static final File CAPERS_FOLDER = Utils.join(CWD, ".capers"); // TODO Hint: look at the `join`
                                             //      function in Utils
 
     /**
@@ -31,7 +36,21 @@ public class CapersRepository {
      *    - story -- file containing the current story
      */
     public static void setupPersistence() {
-        // TODO
+        // Create top level directory
+        String topDirPath = ".capers";
+        File topDir = new File(topDirPath);
+        if (!topDir.exists()) {
+            topDir.mkdir();
+        }
+
+        // Create subdirectories
+        String[] subdirPaths = {"dogs", "story"};
+        for (String subDirPath : subdirPaths) {
+            File subdir = Utils.join(topDirPath, subDirPath);
+            if (!subdir.exists()) {
+                subdir.mkdir();
+            }
+        }
     }
 
     /**
@@ -39,8 +58,14 @@ public class CapersRepository {
      * to a file called `story` in the .capers directory.
      * @param text String of the text to be appended to the story
      */
-    public static void writeStory(String text) {
-        // TODO
+    public static void writeStory(String text) throws IOException {
+        File story = Utils.join(".capers", "story", "story.txt");
+        if (!story.exists()) {
+            story.createNewFile();
+        }
+        String currStory = Utils.readContentsAsString(story);
+        currStory += text + "\n";
+        Utils.writeContents(story, currStory);
     }
 
     /**
@@ -49,7 +74,9 @@ public class CapersRepository {
      * Also prints out the dog's information using toString().
      */
     public static void makeDog(String name, String breed, int age) {
-        // TODO
+        Dog dog = new Dog(name, breed, age);
+        File dogFile = Utils.join(Dog.DOG_FOLDER, name + ".dog");
+        Utils.writeContents(dogFile, dog);
     }
 
     /**
@@ -59,6 +86,7 @@ public class CapersRepository {
      * @param name String name of the Dog whose birthday we're celebrating.
      */
     public static void celebrateBirthday(String name) {
-        // TODO
+        File dogFile = Utils.join(Dog.DOG_FOLDER, name + ".dog");
+
     }
 }
