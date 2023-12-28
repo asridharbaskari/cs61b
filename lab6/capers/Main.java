@@ -63,7 +63,7 @@ public class Main {
         case "birthday":
             validateNumArgs("birthday", args, 2);
             dogName = args[1];
-            dog = Dog.fromFile(dogName + ".dog");
+            dog = Dog.fromFile(dogName);
             dog.haveBirthday();
             dog.saveDog();
             break;
