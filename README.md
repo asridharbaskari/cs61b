@@ -5,7 +5,7 @@ Todo
 - [ ] Lab 4: Debugging
 - [ ] Lab 4A: Git Exercise Part A
 - [ ] Lab 4B: Git Exercise Part B
-- [ ] Lab 6: Getting Started on Project 2
+- [x] Lab 6: Getting Started on Project 2
 - [ ] Lab 7: BST Map
 - [ ] Lab 8: Hash Map
 - [ ] Lab 12: Getting Started on Project 3
